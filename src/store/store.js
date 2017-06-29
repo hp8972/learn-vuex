@@ -5,13 +5,18 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
    state:{
-   	count:5
+   	count:5,
+   	msg:'hello'
    },
    mutations:{
-   	addState:function(state){
-   		state.count++
+   	change(state){
+   		state.msg="hi,welcome to  vuex"
    	},
-   	reduceState:function(state){
+   	//数据更改
+   	addState(state,n){
+   		state.count+=n
+   	},
+   	reduceState(state){
    		state.count--
    	}
    }

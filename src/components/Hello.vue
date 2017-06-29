@@ -1,6 +1,9 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+  	<button @click="change">
+  		<h1>{{ msg }}</h1> 		
+  	</button>
+    
     <h2>Essential Links</h2>
     <button @click="add">+</button>
     <span>{{count}}</span>
@@ -11,15 +14,12 @@
 <script>
 export default {
   name: 'hello',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App',
-       
-    }
-  },
   methods:{
+  	change(){
+  		this.$store.commit('change')
+  	},
   	add(){
-  		this.$store.commit("addState")
+  		this.$store.commit("addState",10)
   	},
   	reduce(){
   		this.$store.commit("reduceState")
@@ -28,7 +28,11 @@ export default {
   computed:{
   	count:function(){
   		return this.$store.state.count
+  	},
+  	msg:function(){
+  		return this.$store.state.msg
   	}
+  
   }
 }
 </script>
